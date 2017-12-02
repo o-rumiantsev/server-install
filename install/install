@@ -1,0 +1,37 @@
+#!/bin/bash
+
+user=$(whoami)
+dir=$(pwd | sed 's/\s/\\ /g')
+
+if [ -d reserve/ ]
+then
+cp reserve/control ./
+cp reserve/tcp-server ./
+cp reserve/net-server.js ./
+else
+sudo chmod 777 tcp-server
+
+mkdir reserve/
+cp control reserve/
+cp tcp-server reserve/
+cp net-server.js reserve/
+fi
+
+sudo mkdir /home/.net-server/
+sudo mkdir /home/.net-server/usr/
+sudo mkdir /home/.net-server/DEBIAN/
+sudo mkdir /home/.net-server/usr/bin/
+
+sudo mv $dir/control /home/.net-server/DEBIAN/
+sudo mv $dir/net-server.js /home/.net-server/usr/bin/
+sudo mv $dir/tcp-server /home/.net-server/usr/bin/
+
+cd /home
+
+sudo fakeroot dpkg-deb -b .net-server
+sudo dpkg -i .net-server.deb
+sudo rm .net-server.deb
+
+cd /home/$user
+
+

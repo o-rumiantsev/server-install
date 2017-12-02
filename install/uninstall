@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo rm -r reserve/
+sudo rm -r /home/.net-server/
+sudo dpkg -r tcp-server-chat
