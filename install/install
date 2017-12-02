@@ -10,16 +10,14 @@ sudo mkdir /home/.net-server/usr/
 sudo mkdir /home/.net-server/DEBIAN/
 sudo mkdir /home/.net-server/usr/bin/
 
-sudo chmod +x res/tcp-server-start
-sudo chmod +x res/tcp-server-remove
+sudo chmod +x $DIR/.tcp-server/res/tcp-server-start
+sudo chmod +x $DIR/.tcp-server/res/tcp-server-remove
 
-sudo cp res/control /home/.net-server/DEBIAN/
-sudo cp res/net-server.js /home/.net-server/usr/bin/
-sudo cp res/tcp-server-start /home/.net-server/usr/bin/
-sudo cp res/tcp-server-remove /home/.net-server/usr/bin
+sudo cp $DIR/.tcp-server/res/control /home/.net-server/DEBIAN/
+sudo cp $DIR/.tcp-server/res/net-server.js /home/.net-server/usr/bin/
+sudo cp $DIR/.tcp-server/res/tcp-server-start /home/.net-server/usr/bin/
+sudo cp $DIR/.tcp-server/res/tcp-server-remove /home/.net-server/usr/bin
 
-cd /home
-
-sudo fakeroot dpkg-deb -b .net-server
-sudo dpkg -i .net-server.deb
-sudo rm .net-server.deb
+sudo fakeroot dpkg-deb -b /home/.net-server
+sudo dpkg -i /home/.net-server.deb
+sudo rm /home/.net-server.deb
