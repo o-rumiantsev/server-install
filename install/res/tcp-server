@@ -10,7 +10,7 @@ if [[ $1 = $startOpt ]]
 then
   if [[ $2 = $logOpt ]]
   then
-    node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
+    sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
   else
     node /home/.net-server/usr/bin/net-server.js
   fi
