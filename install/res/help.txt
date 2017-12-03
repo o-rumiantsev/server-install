@@ -11,6 +11,8 @@ OPTIONS
              '-log' key requires logging to ./log/logs.txt
        remove
              Remove tcp-server utility from your computer. 
+       update
+             Update tcp-server to latest version
        --help
              Output a usage message and exit.
        --show-log
