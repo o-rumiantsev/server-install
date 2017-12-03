@@ -4,7 +4,7 @@ const os = require('os');
 const net = require('net');
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
-console.log('Server address is: ' + ip);
+console.log('Server address is: ' + ip + '\nPort: 8080');
 
 const history = new Set();
 const sockets = new Map();

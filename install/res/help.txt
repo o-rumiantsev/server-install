@@ -1,5 +1,5 @@
 NAME
-       tcp-server - test util
+       tcp-server - test utility
 SYNOPSIS 
        tcp-server [ OPTION ]
 DESCRIPTION
