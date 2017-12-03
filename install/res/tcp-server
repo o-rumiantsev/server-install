@@ -46,7 +46,7 @@ then
 
 elif [[ $1 = $clearlogOpt ]]
 then
-  sudo echo > /home/.net-server/usr/bin/loglogs.txt
+  sudo echo > /home/.net-server/usr/bin/log/logs.txt
 
 else
   echo "Usage: tcp-server [ OPTION ]"
