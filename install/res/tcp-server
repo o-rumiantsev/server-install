@@ -4,6 +4,7 @@ startOpt="start"
 removeOpt="remove"
 helpOpt="--help"
 logOpt="log"
+showlogOpt="--show-log"
 
 if [[ $1 = $startOpt ]]
 then
@@ -21,6 +22,9 @@ elif [[ $1 = $helpOpt ]]
 then
   echo
   cat /home/.net-server/usr/bin/help/help.txt
+elif [[ $1 = $showlogOpt ]]
+then
+  cat /home/.net-server/usr/bin/log/logs.txt
 else
   echo "Usage: tcp-server [ OPTION ]"
   echo "Type 'tcp-server --help' for aditional info"
