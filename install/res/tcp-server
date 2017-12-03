@@ -5,7 +5,11 @@ logOpt="log"
 removeOpt="remove"
 updateOpt="update"
 helpOpt="--help"
+vOpt="-v"
+versionOpt="--version"
 showlogOpt="--show-log"
+
+version=$(dpkg -l tcp-server-chat | tail -1 | tr -s ' ' | cut -d' ' -f3)
 
 if [[ $1 = $startOpt ]]
 then
@@ -26,6 +30,9 @@ elif [[ $1 = $helpOpt ]]
 then
   echo
   cat /home/.net-server/usr/bin/help/help.txt
+elif [[ $1 = $vOpt || $1 = $versionOpt ]]
+then
+  echo "v$version"
 elif [[ $1 = $showlogOpt ]]
 then
   cat /home/.net-server/usr/bin/log/logs.txt
