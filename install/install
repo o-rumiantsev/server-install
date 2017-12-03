@@ -14,7 +14,7 @@ sudo mkdir /home/.net-server/usr/bin/help
 sudo chmod +x $DIR/install/res/tcp-server
 
 sudo cp $DIR/install/res/control /home/.net-server/DEBIAN/
-sodu cp $DIR/install/res/help.txt /home/.net-server/usr/bin/help/
+sudo cp $DIR/install/res/help.txt /home/.net-server/usr/bin/help/
 sudo cp $DIR/install/res/net-server.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/tcp-server /home/.net-server/usr/bin/
 
