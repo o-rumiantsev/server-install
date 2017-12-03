@@ -1,11 +1,11 @@
 #!/bin/bash
 
-logOpt="-log"
 startOpt="start"
 removeOpt="remove"
 helpOpt="--help"
+logOpt="log"
 
-if [[ $1 = $startCmd ]]
+if [[ $1 = $startOpt ]]
 then
   if [[ $2 = $logOpt ]]
   then
@@ -13,11 +13,11 @@ then
   else
     node /home/.net-server/usr/bin/net-server.js
   fi
-elif [[ $1 = $removeCmd ]]
+elif [[ $1 = $removeOpt ]]
 then
   sudo rm -r /home/.net-server/
   sudo dpkg -r tcp-server-chat
-elif [[ $1 = $helpCmd ]]
+elif [[ $1 = $helpOpt ]]
 then
   echo
   cat /home/.net-server/usr/bin/help/help.txt
