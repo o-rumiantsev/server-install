@@ -44,7 +44,7 @@ elif [[ $1 = $showlogOpt ]]
 then
   cat /home/.net-server/usr/bin/log/logs.txt
 
-elif [[$1 = $clearlogOpt ]]
+elif [[ $1 = $clearlogOpt ]]
 then
   sudo echo > /home/.net-server/usr/bin/loglogs.txt
 
