@@ -1,0 +1,22 @@
+#!/bin/bash
+
+startCmd="start"
+removeCmd="remove"
+helpCmd="--help"
+
+if [[ $1 = $startCmd ]]
+then
+  node /home/.net-server/usr/bin/net-server.js
+elif [[ $1 = $removeCmd ]]
+then
+  sudo rm -r /home/.net-server/
+  sudo rm -r /home/.tcp-server/
+  sudo dpkg -r tcp-server-chat
+elif [[ $1 = $helpCmd ]]
+then
+  echo
+  cat /home/.net-server/usr/bin/help/help.txt
+else
+  echo "Usage: tcp-server [ OPTION ]"
+  echo "Type 'tcp-server --help' for aditional info"
+fi
