@@ -8,10 +8,12 @@ helpOpt="--help"
 vOpt="-v"
 versionOpt="--version"
 showlogOpt="--show-log"
+clearlogOpt="--clear-log"
 
 version=$(dpkg -l tcp-server-chat | tail -1 | tr -s ' ' | cut -d' ' -f3)
 
 if [[ $1 = $startOpt ]]
+
 then
   if [[ $2 = $logOpt ]]
   then
@@ -19,23 +21,32 @@ then
   else
     node /home/.net-server/usr/bin/net-server.js
   fi
+
 elif [[ $1 = $updateOpt ]]
 then
   sudo curl -s https://raw.githubusercontent.com/o-rumiantsev/tcp-server-install/master/install/update | bash
+
 elif [[ $1 = $removeOpt ]]
 then
   sudo rm -r /home/.net-server/
   sudo dpkg -r tcp-server-chat
+
 elif [[ $1 = $helpOpt ]]
 then
   echo
   cat /home/.net-server/usr/bin/help/help.txt
+
 elif [[ $1 = $vOpt || $1 = $versionOpt ]]
 then
   echo "v$version"
+
 elif [[ $1 = $showlogOpt ]]
 then
   cat /home/.net-server/usr/bin/log/logs.txt
+
+elif [[$1 = $clearlogOpt ]]
+  sudo echo > /home/.net-server/usr/bin/loglogs.txt
+
 else
   echo "Usage: tcp-server [ OPTION ]"
   echo "Type 'tcp-server --help' for aditional info"
