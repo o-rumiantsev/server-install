@@ -6,6 +6,13 @@ const net = require('net');
 const ip = os.networkInterfaces().wlp2s0[0].address;
 console.log('Server address is: ' + ip + '\nPort: 8080');
 
+try {
+  log;
+  console.log('Logging required');
+} catch (error) {
+    global.log = () => {};
+}
+
 const history = new Set();
 const sockets = new Map();
 let connections = 0;
@@ -14,6 +21,8 @@ const server = net.createServer((socket) => {
   const ip = socket.remoteAddress;
   if (!sockets.has(ip)) {
     console.log(`Client ${ip} connected`);
+    log(`Client ${ip} connected`);
+
     sockets.set(ip, socket);
     connections++;
 
@@ -43,6 +52,7 @@ const server = net.createServer((socket) => {
 
     socket.on('end', () => {
       console.log(`Client ${ip} disconnected`);
+      log(`Client ${ip} disconnected`);
       sockets.delete(ip);
       connections--;
       sockets.forEach((sckt) => {
@@ -52,7 +62,11 @@ const server = net.createServer((socket) => {
   } else socket.end();
 });
 
-server.listen(8080, ip);
+server.listen(8080, ip, () => {
+  log(`Server is listening for ${ip}`);
+});
+
 server.on('error', (err) => {
+  log(`Server error occured: ${err.message}`);
   throw err;
 });

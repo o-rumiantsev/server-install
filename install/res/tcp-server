@@ -1,12 +1,18 @@
 #!/bin/bash
 
-startCmd="start"
-removeCmd="remove"
-helpCmd="--help"
+logOpt="-log"
+startOpt="start"
+removeOpt="remove"
+helpOpt="--help"
 
 if [[ $1 = $startCmd ]]
 then
-  node /home/.net-server/usr/bin/net-server.js
+  if [[ $2 = $logOpt ]]
+  then
+    node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
+  else
+    node /home/.net-server/usr/bin/net-server.js
+  fi
 elif [[ $1 = $removeCmd ]]
 then
   sudo rm -r /home/.net-server/
