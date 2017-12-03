@@ -1,9 +1,10 @@
 #!/bin/bash
 
 startOpt="start"
-removeOpt="remove"
-helpOpt="--help"
 logOpt="log"
+removeOpt="remove"
+updateOpt="update"
+helpOpt="--help"
 showlogOpt="--show-log"
 
 if [[ $1 = $startOpt ]]
@@ -14,6 +15,11 @@ then
   else
     node /home/.net-server/usr/bin/net-server.js
   fi
+elif [[ $1 = $updateOpt ]]
+then
+  sudo rm -r /home/.net-server/
+  sudo dpkg -r tcp-server-chat
+  sudo curl -s https://raw.githubusercontent.com/o-rumiantsev/tcp-server-install/master/install/install | bash
 elif [[ $1 = $removeOpt ]]
 then
   sudo rm -r /home/.net-server/
