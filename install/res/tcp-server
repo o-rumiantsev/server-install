@@ -10,7 +10,6 @@ then
 elif [[ $1 = $removeCmd ]]
 then
   sudo rm -r /home/.net-server/
-  sudo rm -r /home/.tcp-server/
   sudo dpkg -r tcp-server-chat
 elif [[ $1 = $helpCmd ]]
 then
