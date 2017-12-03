@@ -63,7 +63,7 @@ const server = net.createServer((socket) => {
 });
 
 server.listen(8080, ip, () => {
-  log(`Server is listening for ${ip}`);
+  log(`Server is listening for ${ip}:8080`);
 });
 
 server.on('error', (err) => {
