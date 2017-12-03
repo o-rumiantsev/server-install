@@ -17,9 +17,7 @@ then
   fi
 elif [[ $1 = $updateOpt ]]
 then
-  sudo rm -r /home/.net-server/
-  sudo dpkg -r tcp-server-chat
-  sudo curl -s https://raw.githubusercontent.com/o-rumiantsev/tcp-server-install/master/install/install | bash
+  sudo curl -s https://raw.githubusercontent.com/o-rumiantsev/tcp-server-install/master/install/update | bash
 elif [[ $1 = $removeOpt ]]
 then
   sudo rm -r /home/.net-server/
