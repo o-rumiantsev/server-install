@@ -1,7 +1,6 @@
 #!/bin/bash
 
 startOpt="start"
-logOpt="log"
 removeOpt="remove"
 updateOpt="update"
 versionOpt="version"
@@ -9,15 +8,27 @@ showlogOpt="show-log"
 clearlogOpt="clear-log"
 helpOpt="--help"
 vKey="-v"
+lKey="-l"
+pKey="-p"
 
 version=$(dpkg -l tcp-server-chat | tail -1 | tr -s ' ' | cut -d' ' -f3)
 
 if [[ $1 = $startOpt ]]
 
 then
-  if [[ $2 = $logOpt ]]
+  if [[ $2 = $lKey ]]
   then
-    sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
+    if [[ $3 = $pKey ]]
+    then
+      if [[ -n $4 ]]
+      then
+        sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js $4
+      else
+        echo "ERRNOPORT: port argument required"
+      fi
+    else
+      sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
+    fi
   else
     node /home/.net-server/usr/bin/net-server.js
   fi

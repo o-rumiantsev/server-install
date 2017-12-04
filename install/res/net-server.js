@@ -1,7 +1,11 @@
 'use strict';
 
 const os = require('os');
+const process = require('process');
 const net = require('net');
+
+let port = process.argv.filter(item => !item.startsWith('/'))[0];
+if (!port) port = 8080;
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
 console.log('Server address is: ' + ip + '\nPort: 8080');
@@ -62,7 +66,7 @@ const server = net.createServer((socket) => {
   } else socket.end();
 });
 
-server.listen(8080, ip, () => {
+server.listen(port, ip, () => {
   log(`Server is listening for ${ip}:8080`);
 });
 

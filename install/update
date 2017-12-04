@@ -23,6 +23,8 @@ sudo cp $DIR/install/res/net-server.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/tcp-server /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/log.js /home/.net-server/usr/bin/
 
+sudo sed -i '/# enable bash completion in interactive shells/{N;N;N;N;N;N;N;s/\n#/\n/g}' /etc/bash.bashrc
+
 sudo rm /usr/share/bash-complation/copmlations/tcp-server
 sudo cp $DIR/install/res/complation/tcp-server /usr/share/bash-complation/copmlations/
 

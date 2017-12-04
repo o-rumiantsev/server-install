@@ -9,10 +9,7 @@ _tcp-server() {
   then
     local opts=("start" "remove" "update" "--help" "version" "show-log" "clear-log")
 
-    if [ $3 = "start" ]
-    then
-      COMPREPLY=( `compgen -W "log" -- $cur` )
-    elif [[ cword -lt 2 ]]
+    if [[ cword -lt 2 ]]
     then
       COMPREPLY=( `compgen -W "${opts[*]}" -- $cur` )
     fi

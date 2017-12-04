@@ -8,9 +8,10 @@ DESCRIPTION
 OPTIONS
        --help,
              Output a usage message and exit.
-       start [-log],
+       start [-l][-p] <port>,
              Start server on your computer.
-             '-log' key requires logging to ./log/logs.txt
+             '-l' key requires logging to ./log/logs.txt
+             '-p' key allows to set port.
        remove,
              Remove tcp-server utility from your computer.
        update,
