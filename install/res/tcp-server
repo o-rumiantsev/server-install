@@ -29,6 +29,14 @@ then
     else
       sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
     fi
+  elif [[ $2 = $pkey ]]
+    then
+      if [[ -n $3 ]]
+      then
+        sudo node /home/.net-server/usr/bin/net-server.js $3
+      else
+        echo "ERRNOPORT: port argument required"
+      fi
   else
     node /home/.net-server/usr/bin/net-server.js
   fi
