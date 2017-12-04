@@ -21,6 +21,9 @@ sudo cp $DIR/install/res/tcp-server /home/.net-server/usr/bin/
 sudo cp -r $DIR/install/res/log/ /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/log.js /home/.net-server/usr/bin/
 
+sudo rm /usr/share/bash-complation/copmlations/tcp-server
+sudo cp $DIR/install/res/complation/tcp-server /usr/share/bash-complation/copmlations/
+
 sudo fakeroot dpkg-deb -b /home/.net-server
 sudo dpkg -i /home/.net-server.deb
 sudo rm /home/.net-server.deb

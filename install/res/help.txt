@@ -6,6 +6,8 @@ DESCRIPTION
        simple  utility to start your own server with simple command line chat
        which could be coonected to through telnet client.
 OPTIONS
+       --help,
+             Output a usage message and exit.
        start [-log],
              Start server on your computer.
              '-log' key requires logging to ./log/logs.txt
@@ -13,13 +15,11 @@ OPTIONS
              Remove tcp-server utility from your computer.
        update,
              Update tcp-server to latest version.
-       --show-log,
+       show-log,
              Output logs.
-       --clear-log,
+       clear-log,
              Delete all logs.
-       --help,
-             Output a usage message and exit.
-       -v, --version
+       -v, version
              Output version info.
 AUTHOR
        Rumiantsev Oleksii

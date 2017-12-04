@@ -1,0 +1,22 @@
+#tcp-server completion                                         -*- shell-script -*-
+
+_tcp-server() {
+
+  local cur prev words cword  
+  _init_completion || return
+
+  if [ -n $cur ]
+  then
+    local opts=("start" "remove" "update" "--help" "version" "show-log" "clear-log")
+
+    if [ $3 = "start" ]
+    then
+      COMPREPLY=( `compgen -W "log" -- $cur` )
+    elif [[ cword -lt 2 ]]
+    then
+      COMPREPLY=( `compgen -W "${opts[*]}" -- $cur` )
+    fi
+  fi
+} &&
+complete -F _tcp-server tcp-server
+

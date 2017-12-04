@@ -4,11 +4,11 @@ startOpt="start"
 logOpt="log"
 removeOpt="remove"
 updateOpt="update"
+versionOpt="version"
+showlogOpt="show-log"
+clearlogOpt="clear-log"
 helpOpt="--help"
-vOpt="-v"
-versionOpt="--version"
-showlogOpt="--show-log"
-clearlogOpt="--clear-log"
+vKey="-v"
 
 version=$(dpkg -l tcp-server-chat | tail -1 | tr -s ' ' | cut -d' ' -f3)
 
@@ -36,7 +36,7 @@ then
   echo
   cat /home/.net-server/usr/bin/help/help.txt
 
-elif [[ $1 = $vOpt || $1 = $versionOpt ]]
+elif [[ $1 = $vKey || $1 = $versionOpt ]]
 then
   echo "v$version"
 

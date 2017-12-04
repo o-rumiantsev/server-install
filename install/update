@@ -23,6 +23,9 @@ sudo cp $DIR/install/res/net-server.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/tcp-server /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/log.js /home/.net-server/usr/bin/
 
+sudo rm /usr/share/bash-complation/copmlations/tcp-server
+sudo cp $DIR/install/res/complation/tcp-server /usr/share/bash-complation/copmlations/
+
 sudo cp -r /home/log/ /home/.net-server/usr/bin/
 sudo rm -r /home/log/
 
