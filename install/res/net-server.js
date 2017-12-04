@@ -8,7 +8,7 @@ let port = process.argv.filter(item => !item.startsWith('/'))[0];
 if (!port) port = 8080;
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
-console.log('Server address is: ' + ip + '\nPort: 8080');
+console.log(`Server address is:  ${ip}\nPort: ${port}`);
 
 try {
   log;
