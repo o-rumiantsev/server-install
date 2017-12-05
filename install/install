@@ -5,8 +5,6 @@ sudo git clone https://github.com/o-rumiantsev/tcp-server-install "$DIR"
 
 cd $DIR
 
-cat bash.bashrc |
-
 sudo mkdir /home/.net-server/
 sudo mkdir /home/.net-server/usr/
 sudo mkdir /home/.net-server/DEBIAN/

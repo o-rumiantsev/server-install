@@ -5,17 +5,13 @@ const process = require('process');
 const net = require('net');
 
 let port = process.argv.filter(item => !item.startsWith('/'))[0];
-if (!port || typeof(port) !== 'number') port = 8080;
+if (!port || port.replace(/[0-9]/g, '').length !== 0) port = 8080;
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
 console.log(`Server address is:  ${ip}\nPort: ${port}`);
 
-try {
-  log;
-  console.log('Logging required');
-} catch (error) {
-    global.log = () => {};
-}
+if (global.log) console.log('Logging required');
+else global.log = () => {};
 
 const history = new Set();
 const sockets = new Map();
