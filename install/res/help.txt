@@ -8,7 +8,7 @@ DESCRIPTION
 OPTIONS
        --help,
              Output a usage message and exit.
-       start [-l][-p] <port>,
+       start [-l][ -p <port>],
              Start server on your computer.
              '-l' key requires logging to ./log/logs.txt
              '-p' key allows to set port.
