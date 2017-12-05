@@ -15,13 +15,13 @@ sudo mkdir /home/.net-server/usr/bin/
 sudo mkdir /home/.net-server/usr/bin/help
 sudo mkdir /home/.net-server/usr/bin/log
 
-sudo chmod +x $DIR/install/res/tcp-server
+sudo chmod +x $DIR/install/res/bin/tcp-server
 
-sudo cp $DIR/install/res/control /home/.net-server/DEBIAN/
-sudo cp $DIR/install/res/help.txt /home/.net-server/usr/bin/help/
-sudo cp $DIR/install/res/net-server.js /home/.net-server/usr/bin/
-sudo cp $DIR/install/res/tcp-server /home/.net-server/usr/bin/
-sudo cp $DIR/install/res/log.js /home/.net-server/usr/bin/
+sudo cp $DIR/install/control /home/.net-server/DEBIAN/
+sudo cp $DIR/install/res/help/help.txt /home/.net-server/usr/bin/help/
+sudo cp $DIR/install/res/js/net-server.js /home/.net-server/usr/bin/
+sudo cp $DIR/install/res/bin/tcp-server /home/.net-server/usr/bin/
+sudo cp $DIR/install/res/js/log.js /home/.net-server/usr/bin/
 
 sudo sed -i '/# enable bash completion in interactive shells/{N;N;N;N;N;N;N;s/\n#/\n/g}' /etc/bash.bashrc
 
