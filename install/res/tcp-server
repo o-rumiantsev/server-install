@@ -16,30 +16,32 @@ version=$(dpkg -l tcp-server-chat | tail -1 | tr -s ' ' | cut -d' ' -f3)
 if [[ $1 = $startOpt ]]
 
 then
-  if [[ $2 = $lKey ]]
-  then
-    if [[ $3 = $pKey ]]
-    then
-      if [[ -n $4 ]]
+  case $2 in
+    $lKey)
+      if [[ $3 = $pKey ]]
       then
-        sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js $4
+        if [[ -n $4 ]]
+        then
+         sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js $4
+        else
+         echo "ERRNOPORT: port argument required" 
+        fi
+
       else
-        echo "ERRNOPORT: port argument required"
+        sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
       fi
-    else
-      sudo node -r /home/.net-server/usr/bin/log.js /home/.net-server/usr/bin/net-server.js
-    fi
-  elif [[ $2 = $pkey ]]
-    then
+      ;;
+    $pKey)
       if [[ -n $3 ]]
       then
         sudo node /home/.net-server/usr/bin/net-server.js $3
       else
         echo "ERRNOPORT: port argument required"
       fi
-  else
-    node /home/.net-server/usr/bin/net-server.js
-  fi
+      ;;
+    *)
+      node /home/.net-server/usr/bin/net-server.js
+  esac
 
 elif [[ $1 = $updateOpt ]]
 then
@@ -65,9 +67,9 @@ then
 
 elif [[ $1 = $clearlogOpt ]]
 then
-  sudo echo > /home/.net-server/usr/bin/log/logs.txt
+  sudo truncate -s 0 /home/.net-server/usr/bin/log/logs.txt
 
 else
-  echo "Usage: tcp-server [ OPTION ]"
+  echo "Usage: tcp-server [OPTION] ..[KEY]"
   echo "Type 'tcp-server --help' for aditional info"
 fi

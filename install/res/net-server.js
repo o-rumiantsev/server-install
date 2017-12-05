@@ -5,7 +5,7 @@ const process = require('process');
 const net = require('net');
 
 let port = process.argv.filter(item => !item.startsWith('/'))[0];
-if (!port) port = 8080;
+if (!port || typeof(port) !== 'number') port = 8080;
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
 console.log(`Server address is:  ${ip}\nPort: ${port}`);
@@ -67,7 +67,7 @@ const server = net.createServer((socket) => {
 });
 
 server.listen(port, ip, () => {
-  log(`Server is listening for ${ip}:8080`);
+  log(`Server is listening for ${ip}:${port}`);
 });
 
 server.on('error', (err) => {
