@@ -9,7 +9,7 @@ cli();
 const ip = os.networkInterfaces().wlp2s0[0].address;
 if (!global.port) global.port = 8080;
 if (global.start && global.log) console.log(
-  '\x1b[1;32mLogging required\x1b[0m'
+  '\n\x1b[1;32mLogging required\x1b[0m'
 );
 else global.log = () => {};
 
