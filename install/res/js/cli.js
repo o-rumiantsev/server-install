@@ -67,8 +67,8 @@ function cli() {
     }
     case 'remove': { // if 'remove'
       global.start = false; // dont start
-      fs.delete('/home/.net-server');
-      fs.delete('/usr/bin/tcp-server');
+      cp.exec('rm /usr/bin/tcp-server');
+      cp.exec('rm -r /home/.net-server/');
     }
     case 'update': { // if 'update'
       global.start = false; // dont start
