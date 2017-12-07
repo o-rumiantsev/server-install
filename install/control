@@ -1,6 +1,6 @@
 Source: tcp-server
 Package: tcp-server-chat
-Version: 1.1.6
+Version: 1.1.7
 Section: base
 Priority: optional
 Architecture: amd64

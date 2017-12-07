@@ -78,7 +78,7 @@ function cli() {
     case 'show-log': { // if 'show-log'
       global.start = false; // dont start
       const logs = fs.readFileSync('/home/.net-server/usr/bin/log/logs.txt');
-      console.log(logs.toString());
+      process.stdout.write(logs.toString());
       break;
     }
     case 'clear-log': { // if 'clear-log'
@@ -100,7 +100,7 @@ function cli() {
     case '--help': { // if '--help'
       global.start = false; // dont start
       const help = fs.readFileSync('/home/.net-server/usr/bin/help/help.txt');
-      console.log(help.toString());
+      process.stdout.write(help.toString());
       break;
     }
     default: { // if not required arguments
