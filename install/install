@@ -17,6 +17,7 @@ sudo chmod +x $DIR/install/res/bin/tcp-server
 sudo cp $DIR/install/control /home/.net-server/DEBIAN/
 sudo cp $DIR/install/res/bin/tcp-server /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/js/net-server.js /home/.net-server/usr/bin/
+sudo cp $DIR/install/res/js/cli.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/js/log.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/help/help.txt /home/.net-server/usr/bin/help/
 sudo cp -r $DIR/install/res/log/ /home/.net-server/usr/bin/
