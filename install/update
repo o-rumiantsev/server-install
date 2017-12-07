@@ -26,7 +26,7 @@ sudo cp $DIR/install/res/js/log.js /home/.net-server/usr/bin/
 sudo sed -i '/# enable bash completion in interactive shells/{N;N;N;N;N;N;N;s/\n#/\n/g}' /etc/bash.bashrc
 
 sudo rm /usr/share/bash-completion/completions/tcp-server
-sudo cp $DIR/install/res/completion/tcp-server /usr/share/bash-completion/completions/
+sudo cp $DIR/install/res/bin/completion/tcp-server /usr/share/bash-completion/completions/
 
 sudo cp -r /home/log/ /home/.net-server/usr/bin/
 sudo rm -r /home/log/
