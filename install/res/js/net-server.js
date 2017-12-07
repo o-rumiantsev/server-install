@@ -1,30 +1,26 @@
 'use strict';
 
 const os = require('os');
-const process = require('process');
 const net = require('net');
+const cli = require('./cli.js');
 
-let port = process.argv.filter(item => !item.startsWith('/'))[0];
-if (!port || port.replace(/[0-9]/g, '').length !== 0) port = 8080;
+cli();
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
-console.log(`Server address is:  ${ip}\nPort: ${port}`);
-
-if (global.log) console.log('Logging required');
+if (!global.port) global.port = 8080;
+if (global.start && global.log) console.log('Logging required');
 else global.log = () => {};
 
 const history = new Set();
 const sockets = new Map();
-let connections = 0;
 
-const server = net.createServer((socket) => {
+function onConnection(socket) {
   const ip = socket.remoteAddress;
   if (!sockets.has(ip)) {
     console.log(`Client ${ip} connected`);
     log(`Client ${ip} connected`);
 
     sockets.set(ip, socket);
-    connections++;
 
     for (const msg of history) socket.write(msg);
     socket.write(
@@ -54,19 +50,23 @@ const server = net.createServer((socket) => {
       console.log(`Client ${ip} disconnected`);
       log(`Client ${ip} disconnected`);
       sockets.delete(ip);
-      connections--;
       sockets.forEach((sckt) => {
         sckt.write(`${ip} disconnected\n`);
       });
     });
   } else socket.end();
-});
+};
 
-server.listen(port, ip, () => {
-  log(`Server is listening for ${ip}:${port}`);
-});
+const server = net.createServer(onConnection);
 
-server.on('error', (err) => {
-  log(`Server error occured: ${err.message}`);
-  throw err;
-});
+if (start) {
+  server.listen(port, ip, () => {
+    console.log(`Server address is:  ${ip}\nPort: ${port}`);
+    log(`Server is listening for ${ip}:${port}`);
+  });
+
+  server.on('error', (err) => {
+    log(`Server error occured: ${err.message}`);
+    throw err;
+  });
+}
