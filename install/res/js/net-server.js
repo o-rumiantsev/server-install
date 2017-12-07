@@ -2,7 +2,7 @@
 
 const os = require('os');
 const net = require('net');
-const cli = require('./cli.js');
+const cli = require(__dirname + '/cli.js');
 
 cli();
 
