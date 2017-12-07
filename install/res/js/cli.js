@@ -69,6 +69,7 @@ function cli() {
       global.start = false; // dont start
       cp.exec('rm /usr/bin/tcp-server');
       cp.exec('rm -r /home/.net-server/');
+      break;
     }
     case 'update': { // if 'update'
       global.start = false; // dont start
