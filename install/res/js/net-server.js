@@ -21,6 +21,7 @@ function onConnection(socket) {
   let ip = socket.remoteAddress;
 
   if (!sockets.has(ip)) {
+    console.log(`Client ${ip} connected`);
     log(`Client ${ip} connected`);
 
     sockets.set(ip, socket);
@@ -44,6 +45,7 @@ function onConnection(socket) {
 
     socket.on('end', () => {
       sockets.delete(ip);
+      console.log(`Client ${ip} disconnected`);
       log(`Client ${ip} disconnected`);
     });
   } else socket.end();
