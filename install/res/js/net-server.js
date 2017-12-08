@@ -13,34 +13,28 @@ if (global.start && global.log) console.log(
 );
 else global.log = () => {};
 
-const history = new Set();
+const history = new Array();
 const sockets = new Map();
 
+
 function onConnection(socket) {
-  const ip = socket.remoteAddress;
+  let ip = socket.remoteAddress;
 
   if (!sockets.has(ip)) {
-    console.log(`Client ${ip} connected`);
     log(`Client ${ip} connected`);
 
     sockets.set(ip, socket);
 
     for (const msg of history) socket.write(msg);
     socket.write(
-      `\nYou are on server\nYour IP: ${ip}\n`
+      `\nYou are on server\nYour ip is: ${ip}\n`
     );
 
-    sockets.forEach((sckt) => {
-      if (sckt !== socket) {
-        sckt.write(`${ip} connected\n`);
-      }
-    });
-
     socket.setEncoding('utf8');
-    socket.on('data', (data) => {
-      if (data !== '\r\n') {
-        const msg = `📨  ${ip}: ` + data;
-        history.add(msg);
+    socket.on('data', (msg) => {
+      if (msg !== '\r\n') {
+        console.log(msg);
+        history.push(msg + '\n');
         sockets.forEach((sckt) => {
           if (sckt !== socket) {
             sckt.write(msg);
@@ -50,12 +44,8 @@ function onConnection(socket) {
     });
 
     socket.on('end', () => {
-      console.log(`Client ${ip} disconnected`);
-      log(`Client ${ip} disconnected`);
       sockets.delete(ip);
-      sockets.forEach((sckt) => {
-        sckt.write(`${ip} disconnected\n`);
-      });
+      log(`Client ${ip} disconnected`);
     });
   } else socket.end();
 };
