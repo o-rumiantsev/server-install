@@ -4,7 +4,7 @@ const os = require('os');
 const net = require('net');
 const cli = require(__dirname + '/cli.js');
 
-cli();
+// cli();
 
 const ip = os.networkInterfaces().wlp2s0[0].address;
 if (!global.port) global.port = 8080;
@@ -18,6 +18,7 @@ const sockets = new Map();
 
 function onConnection(socket) {
   const ip = socket.remoteAddress;
+  console.log(socket);
   if (!sockets.has(ip)) {
     console.log(`Client ${ip} connected`);
     log(`Client ${ip} connected`);
@@ -26,7 +27,7 @@ function onConnection(socket) {
 
     for (const msg of history) socket.write(msg);
     socket.write(
-      `\nYou are on server\nOnline ${connections}\nYour IP: ${ip}\n`
+      `\nYou are on server\nYour IP: ${ip}\n`
     );
 
     sockets.forEach((sckt) => {
@@ -61,9 +62,9 @@ function onConnection(socket) {
 
 const server = net.createServer(onConnection);
 
-if (start) {
+// if (start) {
   server.listen(port, ip, () => {
-    console.log(`Server address is:  ${ip}\nPort: ${port}`);
+    console.log(`Server address is: ${ip}\nPort: ${port}`);
     log(`Server is listening for ${ip}:${port}`);
   });
 
@@ -71,4 +72,4 @@ if (start) {
     log(`Server error occured: ${err.message}`);
     throw err;
   });
-}
+// }

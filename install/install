@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="/home/.tcp-server"
-sudo git clone https://github.com/o-rumiantsev/tcp-server-install "$DIR"
+sudo git clone https://github.com/o-rumiantsev/install "$DIR"
 
 cd $DIR
 

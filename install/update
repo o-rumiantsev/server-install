@@ -6,7 +6,7 @@ sudo dpkg -r tcp-server-chat
 sudo cp -r /home/.net-server/usr/bin/log/ /home/
 sudo rm -r /home/.net-server/
 
-sudo git clone https://github.com/o-rumiantsev/tcp-server-install "$DIR"
+sudo git clone https://github.com/o-rumiantsev/install "$DIR"
 
 sudo mkdir /home/.net-server/
 sudo mkdir /home/.net-server/usr/
