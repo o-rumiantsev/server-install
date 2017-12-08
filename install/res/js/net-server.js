@@ -33,7 +33,6 @@ function onConnection(socket) {
     socket.setEncoding('utf8');
     socket.on('data', (msg) => {
       if (msg !== '\r\n') {
-        console.log(msg);
         history.push(msg + '\n');
         sockets.forEach((sckt) => {
           if (sckt !== socket) {
