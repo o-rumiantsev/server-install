@@ -12,8 +12,6 @@ sudo mkdir /home/.net-server/
 sudo mkdir /home/.net-server/usr/
 sudo mkdir /home/.net-server/DEBIAN/
 sudo mkdir /home/.net-server/usr/bin/
-sudo mkdir /home/.net-server/usr/bin/help
-sudo mkdir /home/.net-server/usr/bin/log
 
 sudo chmod +x $DIR/install/res/bin/tcp-server
 
@@ -32,6 +30,8 @@ sudo fakeroot dpkg-deb -b /home/.net-server
 sudo dpkg -i /home/.net-server.deb
 sudo rm /home/.net-server.deb
 
+sudo mkdir /home/.net-server/usr/bin/help
+sudo mkdir /home/.net-server/usr/bin/log
 sudo cp $DIR/install/res/js/net-server.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/js/cli.js /home/.net-server/usr/bin/
 sudo cp $DIR/install/res/js/log.js /home/.net-server/usr/bin/
