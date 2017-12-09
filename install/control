@@ -1,6 +1,6 @@
 Source: tcp-server
 Package: tcp-server
-Version: 1.1.8
+Version: 1.1.9
 Section: base
 Priority: optional
 Architecture: amd64
