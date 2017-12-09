@@ -73,9 +73,8 @@ function cli() {
     }
     case 'update': { // if 'update'
       global.start = false; // dont start
-      cp.exec('/home/.net-server/usr/bin/update', (err, stdout, stderr) => {
+      cp.exec('/home/.net-server/usr/bin/update', (err) => {
         if (err) console.error(err.message);
-        else if (stderr) process.stderr.write(stderr);
         else process.stdout.write('Updated successfully');
       });
       break;
