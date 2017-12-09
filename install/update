@@ -38,9 +38,3 @@ sudo rm /home/.net-server.deb
 
 sudo cp $DIR/install/update /home/.net-server/usr/bin/
 sudo rm -r /home/.tcp-server
-
-version=$(dpkg -l tcp-server-chat | tail -1 | tr -s ' ' | cut -d' ' -f3)
-
-echo
-echo "Updated successfully"
-echo "v$version"
