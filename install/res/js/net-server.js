@@ -13,12 +13,13 @@ if (global.start && global.log) console.log(
 );
 else global.log = () => {};
 
-const history = new Array();
+const rooms = {};
 const sockets = new Map();
 
 
 function onConnection(socket) {
   let ip = socket.remoteAddress;
+  let room = '';
 
   if (!sockets.has(ip)) {
     console.log(`Client ${ip} connected`);
@@ -26,25 +27,37 @@ function onConnection(socket) {
 
     sockets.set(ip, socket);
 
-    for (const msg of history) socket.write(msg);
-    socket.write(
-      `\nYou are on server\nYour ip is: ${ip}\n`
-    );
+    const send = (room, data) => {
+      const msg = data;
+      rooms[room].forEach((sckt) => {
+        if (sckt !== socket) {
+          sckt.write(msg);
+        }
+      });
+    };
 
     socket.setEncoding('utf8');
-    socket.on('data', (msg) => {
-      if (msg !== '\r\n') {
-        history.push(msg + '\n');
-        sockets.forEach((sckt) => {
-          if (sckt !== socket) {
-            sckt.write(msg);
-          }
-        });
-      }
+    socket.on('data', (data) => {
+      if (data.startsWith('###Room###')) {
+        room = data.substr(10).split('|')[0];
+
+        socket.write(
+          `\nYou are on server\nRoom: ${room}\n`
+        );
+
+        const msg = data.substr(10).split('|')[1];
+        if (!rooms[room]) {
+          const clients = new Set();
+          rooms[room] = clients;
+        }
+        rooms[room].add(socket);
+        send(room, msg);
+      } else if (data !== '\r\n') send(room, data);
     });
 
     socket.on('end', () => {
       sockets.delete(ip);
+      rooms[room].delete(socket);
       console.log(`Client ${ip} disconnected`);
       log(`Client ${ip} disconnected`);
     });
