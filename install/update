@@ -2,7 +2,7 @@
 
 DIR="/home/.tcp-server"
 
-sudo dpkg -r tcp-server-chat
+sudo dpkg -r tcp-server
 sudo cp -r /home/.net-server/usr/bin/log/ /home/
 sudo rm -r /home/.net-server/
 
