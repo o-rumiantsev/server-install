@@ -1,9 +1,9 @@
 Source: tcp-server
-Package: tcp-server-chat
-Version: 1.1.7
+Package: tcp-server
+Version: 1.1.8
 Section: base
 Priority: optional
 Architecture: amd64
 Depends: bash
 Maintainer: Rumiantsev Oleksii <rumiantsev.oleksii@gmail.com>
-Description: Starts tcp server with chat
+Description: Starts tcp server
