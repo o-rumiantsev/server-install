@@ -75,7 +75,7 @@ function cli() {
       global.start = false; // dont start
       cp.exec('/home/.net-server/usr/bin/update', (err) => {
         if (err) console.error(err.message);
-        else console.log('Updated successfully\n');
+        else process.stdout.write('Updated successfully\n');
       });
       break;
     }
