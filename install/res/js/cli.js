@@ -67,7 +67,7 @@ function cli() {
     }
     case 'remove': { // if 'remove'
       global.start = false; // dont start
-      cp.exec('rm /usr/bin/tcp-server');
+      cp.exec('dpkg -r tcp-server');
       cp.exec('rm -r /home/.net-server/');
       break;
     }
@@ -90,12 +90,12 @@ function cli() {
     }
     case 'version': { // if 'version'
       global.start = false; // dont start
-      showVersion('tcp-server-chat');
+      showVersion('tcp-server');
       break;
     }
     case '-v': { // if '-v'
       global.start = false; // dont start
-      showVersion('tcp-server-chat');
+      showVersion('tcp-server');
       break;
     }
     case '--help': { // if '--help'
