@@ -73,7 +73,11 @@ function cli() {
     }
     case 'update': { // if 'update'
       global.start = false; // dont start
-      cp.execSync('/home/.net-server/usr/bin/update');
+      cp.exec('/home/.net-server/usr/bin/update', (err, stdout, stderr) => {
+        if (err) console.error(err.message);
+        process.stderr.write(stderr);
+        process.stdout.write(stdout);
+      });
       break;
     }
     case 'show-log': { // if 'show-log'
@@ -85,7 +89,7 @@ function cli() {
     case 'clear-log': { // if 'clear-log'
       global.start = false; // dont start
       const cmd = 'truncate -s 0 /home/.net-server/usr/bin/log/logs.txt'
-      cp.execSync(cmd);
+      cp.exec(cmd);
       break;
     }
     case 'version': { // if 'version'
