@@ -19,10 +19,6 @@ sudo chmod +x $DIR/install/res/bin/tcp-server
 
 sudo cp $DIR/install/control /home/.net-server/DEBIAN/
 sudo cp $DIR/install/res/bin/tcp-server /home/.net-server/usr/bin/
-sudo cp $DIR/install/res/js/net-server.js /home/.net-server/usr/bin/
-sudo cp $DIR/install/res/js/cli.js /home/.net-server/usr/bin/
-sudo cp $DIR/install/res/js/log.js /home/.net-server/usr/bin/
-sudo cp $DIR/install/res/help/help.txt /home/.net-server/usr/bin/help/
 
 sudo sed -i '/# enable bash completion in interactive shells/{N;N;N;N;N;N;N;s/\n#/\n/g}' /etc/bash.bashrc
 
@@ -36,5 +32,10 @@ sudo fakeroot dpkg-deb -b /home/.net-server
 sudo dpkg -i /home/.net-server.deb
 sudo rm /home/.net-server.deb
 
+sudo cp $DIR/install/res/js/net-server.js /home/.net-server/usr/bin/
+sudo cp $DIR/install/res/js/cli.js /home/.net-server/usr/bin/
+sudo cp $DIR/install/res/js/log.js /home/.net-server/usr/bin/
+sudo cp $DIR/install/res/help/help.txt /home/.net-server/usr/bin/help/
 sudo cp $DIR/install/update /home/.net-server/usr/bin/
+
 sudo rm -r /home/.tcp-server
