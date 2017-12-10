@@ -3,8 +3,8 @@ NAME
 SYNOPSIS
        tcp-server [ OPTION ] ...
 DESCRIPTION
-       simple  utility to start your own server with simple command line chat
-       which could be coonected to through telnet client.
+       simple  utility to start your own server which requires
+       chat-client package.
 OPTIONS
        --help,
              Output a usage message and exit.
