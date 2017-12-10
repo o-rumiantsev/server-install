@@ -22,7 +22,7 @@ module.exports = cli;
 */
 
 function showVersion(packageName) {
-  const cmd = `dpkg -l ${packageName} | tail -1 | tr -s ' ' | cut -d' ' -f3`
+  const cmd = `dpkg -l ${packageName} | tail -1 | tr -s ' ' | cut -d' ' -f3`;
   cp.exec(cmd, (err, stdout, stderr) => {
     if (err) throw err;
     process.stderr.write(stderr);
@@ -52,7 +52,7 @@ function cli() {
       }
       if (args[1] === '-l') { // if 'start -l' then require logging
         require('/home/.net-server/usr/bin/log.js');
-        if (args[2] === '-p') { // if 'start -l -p' then require logging and need <port> argument
+        if (args[2] === '-p') { // if 'start -l -p' then need <port> argument
           if (!args[3]) { // if no port entered
             console.log('ERRNOPORT: port argument required');
             global.start = false; // dont start
@@ -87,7 +87,7 @@ function cli() {
     }
     case 'clear-log': { // if 'clear-log'
       global.start = false; // dont start
-      const cmd = 'truncate -s 0 /home/.net-server/usr/bin/log/logs.txt'
+      const cmd = 'truncate -s 0 /home/.net-server/usr/bin/log/logs.txt';
       cp.exec(cmd);
       break;
     }
@@ -110,8 +110,8 @@ function cli() {
     default: { // if not required arguments
       global.start = false; // dont start
       console.log(
-        "Usage: tcp-server [OPTION] ..[KEY]\n" +
-        "Type 'tcp-server --help' for aditional info"
+        'Usage: tcp-server [OPTION] ..[KEY]\n' +
+        'Type "tcp-server --help" for aditional info'
       );
     }
   }

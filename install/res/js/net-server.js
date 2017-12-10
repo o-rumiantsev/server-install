@@ -18,12 +18,12 @@ const sockets = new Map();
 
 
 function onConnection(socket) {
-  let ip = socket.remoteAddress;
+  const ip = socket.remoteAddress;
   let room = '';
 
   if (!sockets.has(ip)) {
     console.log(`Client ${ip} connected`);
-    log(`Client ${ip} connected`);
+    global.log(`Client ${ip} connected`);
 
     sockets.set(ip, socket);
 
@@ -59,21 +59,21 @@ function onConnection(socket) {
       sockets.delete(ip);
       rooms[room].delete(socket);
       console.log(`Client ${ip} disconnected`);
-      log(`Client ${ip} disconnected`);
+      global.log(`Client ${ip} disconnected`);
     });
   } else socket.end();
-};
+}
 
 const server = net.createServer(onConnection);
 
-if (start) {
-  server.listen(port, ip, () => {
-    console.log(`Server address is: ${ip}\nPort: ${port}`);
-    log(`Server is listening for ${ip}:${port}`);
+if (global.start) {
+  server.listen(global.port, ip, () => {
+    console.log(`Server address is: ${ip}\nPort: ${global.port}`);
+    global.log(`Server is listening for ${ip}:${global.port}`);
   });
 
   server.on('error', (err) => {
-    log(`Server error occured: ${err.message}`);
+    global.log(`Server error occured: ${err.message}`);
     throw err;
   });
 }

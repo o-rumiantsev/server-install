@@ -11,4 +11,4 @@ global.log = (data) => {
       if (err) console.error(err.message);
     });
   }
-}
+};
