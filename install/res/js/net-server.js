@@ -6,7 +6,10 @@ const cli = require(__dirname + '/cli.js');
 
 cli();
 
-const ip = os.networkInterfaces().wlp2s0[0].address;
+const iface = Object.keys(os.networkInterfaces())
+                    .filter(iface => iface.startsWith('w'))[0];
+
+const ip = os.networkInterfaces()[iface][0].address;
 if (!global.port) global.port = 8080;
 if (global.start && global.log) console.log(
   '\n\x1b[1;32mLogging required\x1b[0m'
